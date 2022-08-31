@@ -5,7 +5,6 @@ end
 
 local lsp_formatting = function(bufnr)
 	vim.lsp.buf.format({
-		async = true,
 		filter = function(client)
 			-- apply whatever logic you want (in this example, we'll only use null-ls)
 			return client.name == "null-ls"
@@ -25,7 +24,7 @@ local on_attach = function(client, bufnr)
 			group = augroup,
 			buffer = bufnr,
 			callback = function()
-				 lsp_formatting(bufnr)
+				lsp_formatting(bufnr)
 			end,
 		})
 	end

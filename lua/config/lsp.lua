@@ -5,7 +5,6 @@ end
 
 local lsp_formatting = function(bufnr)
 	vim.lsp.buf.format({
-		async = true,
 		filter = function(client)
 			-- apply whatever logic you want (in this example, we'll only use null-ls)
 			return client.name == "null-ls"
@@ -57,7 +56,7 @@ local on_attach = function(client, bufnr)
 	vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, bufopts)
 	vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, bufopts)
 	vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
-	vim.keymap.set("n", "<space>f", vim.lsp.buf.format, bufopts)
+	vim.keymap.set("n", "<space>f", lsp_formatting, bufopts)
 end
 
 -- Change character preceding the diagnostics virtual text
