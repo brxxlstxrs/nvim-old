@@ -1,4 +1,8 @@
--- LSP
+local present, lspconfig = pcall(require, 'lspconfig')
+if not present then
+  return
+end
+
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap=true, silent=true }
@@ -41,32 +45,24 @@ vim.diagnostic.config({
   }
 })
 
-local lsp_flags = {
-  -- This is the default in Nvim 0.7+
-  debounce_text_changes = 150,
-}
-
 -- Setup lspconfig from cmp-nvim configuration
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 
 -- Servers
--- Python
-require'lspconfig'.pyright.setup{
-    on_attach = on_attach,
-    capabilities = capabilities
-}
 
 -- Lua
-require'lspconfig'.sumneko_lua.setup {
+lspconfig.sumneko_lua.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
   settings = {
     Lua = {
       runtime = {
-        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
         version = 'LuaJIT',
       },
       diagnostics = {
         -- Get the language server to recognize the `vim` global
+        enable = true,
         globals = {'vim'},
       },
       workspace = {
@@ -74,48 +70,22 @@ require'lspconfig'.sumneko_lua.setup {
         library = vim.api.nvim_get_runtime_file("", true),
       },
       -- Do not send telemetry data containing a randomized but unique identifier
-      telemetry = {
-        enable = false,
-      },
     },
   },
-  on_attach = on_attach,
-  capabilities = capabilities,
 }
 
--- Html
--- require'lspconfig'.html.setup {
---   on_attach = on_attach,
---   capabilities = capabilities,
--- }
-
--- Emmet
-require'lspconfig'.emmet_ls.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
+local servers = {
+  'pyright',
+  'emmet_ls',
+  'clangd',
+  'jsonls',
+  'tsserver',
+  'rust_analyzer'
 }
 
--- Json
-require'lspconfig'.jsonls.setup {
-  on_attach = on_attach,
-  flags = lsp_flags,
-  capabilities = capabilities,
-}
-
--- C++
- require'lspconfig'.clangd.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-}
-
--- TypeScript/JavaScript
-require'lspconfig'.tsserver.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-}
-
--- Rust
-require'lspconfig'.rust_analyzer.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-}
+for _, server in ipairs(servers) do
+  lspconfig[server].setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+  })
+end
