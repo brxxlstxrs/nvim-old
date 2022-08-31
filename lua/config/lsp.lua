@@ -1,5 +1,5 @@
-local present, lspconfig = pcall(require, 'lspconfig')
-if not present then
+local status, lspconfig = pcall(require, 'lspconfig')
+if not status then
   return
 end
 
@@ -14,9 +14,6 @@ vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
-  -- Enable completion triggered by <c-x><c-o>
-  -- vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   local bufopts = { noremap=true, silent=true, buffer=bufnr }
@@ -37,49 +34,47 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
 end
 
--- Change character preceding the diagnostics' virtual text
+-- Change character preceding the diagnostics virtual text
 vim.diagnostic.config({
   virtual_text = {
     -- prefix = '■', -- Could be '●', '▎', 'x'
     prefix = '●',
+    update_in_insert = true,
   }
 })
+
+
 
 -- Setup lspconfig from cmp-nvim configuration
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 
 -- Servers
-
 -- Lua
 lspconfig.sumneko_lua.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   settings = {
     Lua = {
-      runtime = {
-        version = 'LuaJIT',
-      },
       diagnostics = {
         -- Get the language server to recognize the `vim` global
-        enable = true,
         globals = {'vim'},
       },
       workspace = {
-        -- Make the server aware of Neovim runtime files
         library = vim.api.nvim_get_runtime_file("", true),
       },
-      -- Do not send telemetry data containing a randomized but unique identifier
     },
   },
 }
 
 local servers = {
   'pyright',
-  'emmet_ls',
+  -- 'emmet_ls',
+  'html',
+  'tsserver',
+  'cssls',
   'clangd',
   'jsonls',
-  'tsserver',
   'rust_analyzer'
 }
 
@@ -89,3 +84,4 @@ for _, server in ipairs(servers) do
     capabilities = capabilities,
   })
 end
+
