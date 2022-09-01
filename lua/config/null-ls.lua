@@ -34,6 +34,7 @@ local sources = {
 	-- python
 	null_ls.builtins.diagnostics.flake8,
 	null_ls.builtins.formatting.black,
+	-- null_ls.builtins.formatting.autopep8,
 
 	-- lua
 	null_ls.builtins.formatting.stylua,
