@@ -10,11 +10,11 @@ require("catppuccin").setup({
 	term_colors = false,
 	compile = {
 		enabled = false,
-		path = vim.fn.stdpath "cache" .. "/catppuccin",
+		path = vim.fn.stdpath("cache") .. "/catppuccin",
 	},
 	styles = {
-		comments = {},      -- { "italic" },
-		conditionals = {},  -- { "italic" },
+		comments = {}, -- { "italic" },
+		conditionals = {}, -- { "italic" },
 		loops = {},
 		functions = {},
 		keywords = {},
@@ -31,10 +31,10 @@ require("catppuccin").setup({
 		native_lsp = {
 			enabled = true,
 			virtual_text = {
-				errors = {},       -- { "italic" },
-				hints = {},        -- { "italic" },
-				warnings = {},     -- { "italic" },
-				information = {},  -- { "italic" },
+				errors = {}, -- { "italic" },
+				hints = {}, -- { "italic" },
+				warnings = {}, -- { "italic" },
+				information = {}, -- { "italic" },
 			},
 			underlines = {
 				errors = { "underline" },
@@ -43,64 +43,59 @@ require("catppuccin").setup({
 				information = { "underline" },
 			},
 		},
-		coc_nvim = false,
 		lsp_trouble = true,
 		cmp = true,
-		lsp_saga = false,
-		gitgutter = false,
+		-- lsp_saga = false,
 		gitsigns = true,
-		leap = false,
 		telescope = true,
 		nvimtree = true,
-		neotree = {
-			enabled = false,
-			show_root = true,
-			transparent_panel = false,
-		},
 		dap = {
-			enabled = false,
-			enable_ui = false,
+			enabled = true,
+			enable_ui = true,
 		},
-		which_key = false,
+		which_key = true,
 		indent_blankline = {
 			enabled = true,
 			colored_indent_levels = false,
 		},
-		dashboard = true,
-		neogit = false,
-		vim_sneak = false,
-		fern = false,
-		barbar = false,
-		bufferline = {
-			enabled = true,
-			italics = false,  -- true,
-			bolds = true,
-		},
-		markdown = true,
-		lightspeed = false,
-		ts_rainbow = false,
-		hop = false,
-		notify = true,
-		telekasten = true,
-		symbols_outline = true,
-		mini = false,
-		aerial = false,
-		vimwiki = true,
-		beacon = true,
-		navic = false,
-		overseer = false,
+		-- dashboard = true,
+		-- bufferline = {
+		-- 	enabled = true,
+		-- 	italics = false,  -- true,
+		-- 	bolds = true,
+		-- },
+		-- markdown = true,
+		-- lightspeed = false,
+		-- ts_rainbow = false,
+		-- hop = false,
+		-- notify = true,
+		-- telekasten = true,
+		-- symbols_outline = true,
+		-- mini = false,
+		-- aerial = false,
+		-- vimwiki = true,
+		-- beacon = true,
+		-- navic = false,
+		-- overseer = false,
 	},
 	color_overrides = {},
 	highlight_overrides = {},
-  custom_highlights = {
-        -- Treesitter
-        TSParameter = { style = {} },
-        ErrorMsg = { style = {} },
-},
+	custom_highlights = {
+		-- Treesitter
+		TSParameter = { style = {} },
+		ErrorMsg = { style = {} },
+	},
 })
 
-vim.cmd [[colorscheme catppuccin]]
+require("dap")
 
+local sign = vim.fn.sign_define
+
+sign("DapBreakpoint", { text = "●", texthl = "DapBreakpoint", linehl = "", numhl = "" })
+sign("DapBreakpointCondition", { text = "●", texthl = "DapBreakpointCondition", linehl = "", numhl = "" })
+sign("DapLogPoint", { text = "◆", texthl = "DapLogPoint", linehl = "", numhl = "" })
+
+vim.cmd([[colorscheme catppuccin]])
 
 -- require('onedark').setup {
 --     code_style = {

@@ -1,25 +1,27 @@
+local o = vim.opt
 -- Options
--- Editor options
-vim.o.number = true
-vim.o.colorcolumn = "81"
-vim.o.background = "dark"
-vim.o.termguicolors = true
--- vim.o.wrap = false
-vim.o.mouse = "a"
 
-vim.o.expandtab = true
+-- Editor options
+o.number = true
+o.colorcolumn = "81"
+o.background = "dark"
+o.termguicolors = true
+-- vim.o.wrap = false
+o.mouse = "a"
+
+o.expandtab = true
 -- vim.o.shiftwidth = 4
 -- vim.o.tabstop = 4
 -- vim.o.softtabstop = 4
 
-vim.o.updatetime = 300
-vim.o.hidden = true
-vim.o.backup = false
-vim.o.writebackup = false
-vim.o.swapfile = false
+o.updatetime = 300
+o.hidden = true
+o.backup = false
+o.writebackup = false
+o.swapfile = false
 
 -- completeopt
-vim.o.completeopt = 'menuone,noselect'
+o.completeopt = "menuone,noselect"
 
-
-
+o.list = true
+o.listchars:append("eol:↴")

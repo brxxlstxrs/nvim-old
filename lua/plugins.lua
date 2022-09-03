@@ -21,6 +21,17 @@ return require("packer").startup(function(use)
 		end,
 	})
 
+	-- Debug
+	use({
+		"mfussenegger/nvim-dap",
+		config = function()
+			require("config.dap")
+		end,
+	})
+	use("mfussenegger/nvim-dap-python")
+	use("theHamsta/nvim-dap-virtual-text")
+	use("rcarriga/nvim-dap-ui")
+
 	-- null-ls
 	use({
 		"jose-elias-alvarez/null-ls.nvim",
@@ -61,6 +72,10 @@ return require("packer").startup(function(use)
 	})
 	use("windwp/nvim-ts-autotag")
 	use("p00f/nvim-ts-rainbow")
+	use({
+		"nvim-treesitter/nvim-treesitter-context",
+		opt = true,
+	})
 
 	-- Completition icons
 	use("onsails/lspkind.nvim")
@@ -90,6 +105,7 @@ return require("packer").startup(function(use)
 		end,
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
 	})
+	use("kyazdani42/nvim-web-devicons")
 
 	-- bufferline
 	use({
@@ -128,7 +144,7 @@ return require("packer").startup(function(use)
 		},
 	})
 
-	-- Lua
+	-- Which Key
 	use({
 		"folke/which-key.nvim",
 		config = function()
@@ -143,7 +159,11 @@ return require("packer").startup(function(use)
 	-- indent blankline
 	use({
 		"lukas-reineke/indent-blankline.nvim",
-		opt = true,
+		config = function()
+			require("indent_blankline").setup({
+				show_end_of_line = true,
+			})
+		end,
 	})
 
 	-- Terminal from vim
