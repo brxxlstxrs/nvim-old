@@ -73,6 +73,11 @@ local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protoco
 
 -- Servers
 -- Lua
+lspconfig.pyright.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+})
+
 lspconfig.sumneko_lua.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
@@ -90,7 +95,6 @@ lspconfig.sumneko_lua.setup({
 })
 
 local servers = {
-	"pyright",
 	-- 'emmet_ls',
 	"html",
 	"tsserver",
