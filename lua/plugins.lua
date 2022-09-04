@@ -13,6 +13,9 @@ return require("packer").startup(function(use)
 	-- impatient (aww speed)
 	use("lewis6991/impatient.nvim")
 
+	-- plenary
+	use("nvim-lua/plenary.nvim")
+
 	-- LSP
 	use({
 		"neovim/nvim-lspconfig",
@@ -97,15 +100,17 @@ return require("packer").startup(function(use)
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 	use({ "nvim-telescope/telescope-file-browser.nvim" })
 
+	-- devicons
+	-- use("kyazdani42/nvim-web-devicons")
+
 	-- lualine
 	use({
 		"nvim-lualine/lualine.nvim",
 		config = function()
 			require("config.lualine")
 		end,
-		requires = { "kyazdani42/nvim-web-devicons", opt = true },
+		requires = { "kyazdani42/nvim-web-devicons" },
 	})
-	use("kyazdani42/nvim-web-devicons")
 
 	-- bufferline
 	use({
@@ -212,12 +217,14 @@ return require("packer").startup(function(use)
 	end
 end)
 
--- require('config.lsp')
--- require("config.null-ls")
--- require('config.cmp')
--- require('config.treesitter')
--- require('config.telescope')
--- require('config.lualine')
--- require('config.bufferline')
--- require("config.nvim-tree")
--- require('config.toggleterm')
+--[[
+require('config.lsp')
+require("config.null-ls")
+require('config.cmp')
+require('config.treesitter')
+require('config.telescope')
+require('config.lualine')
+require('config.bufferline')
+require("config.nvim-tree")
+require('config.toggleterm')
+]]
