@@ -23,5 +23,5 @@ o.swapfile = false
 -- completeopt
 o.completeopt = "menuone,noselect"
 
-o.list = true
-o.listchars:append("eol:↴")
+-- o.list = true
+-- o.listchars:append("eol:↴")
