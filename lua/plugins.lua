@@ -74,7 +74,6 @@ return require("packer").startup(function(use)
 		end,
 	})
 	use("windwp/nvim-ts-autotag")
-	use("p00f/nvim-ts-rainbow")
 	use({
 		"nvim-treesitter/nvim-treesitter-context",
 		opt = true,
@@ -99,9 +98,6 @@ return require("packer").startup(function(use)
 	})
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 	use({ "nvim-telescope/telescope-file-browser.nvim" })
-
-	-- devicons
-	-- use("kyazdani42/nvim-web-devicons")
 
 	-- lualine
 	use({
@@ -147,27 +143,26 @@ return require("packer").startup(function(use)
 		requires = {
 			"kyazdani42/nvim-web-devicons", -- optional, for file icons
 		},
+		tag = "nightly",
 	})
 
 	-- Which Key
-	use({
-		"folke/which-key.nvim",
-		config = function()
-			require("which-key").setup({
-				-- your configuration comes here
-				-- or leave it empty to use the default settings
-				-- refer to the configuration section below
-			})
-		end,
-	})
+	-- use({
+	-- 	"folke/which-key.nvim",
+	-- 	config = function()
+	-- 		require("which-key").setup({
+	-- 			-- your configuration comes here
+	-- 			-- or leave it empty to use the default settings
+	-- 			-- refer to the configuration section below
+	-- 		})
+	-- 	end,
+	-- })
 
 	-- indent blankline
 	use({
 		"lukas-reineke/indent-blankline.nvim",
 		config = function()
-			require("indent_blankline").setup({
-				-- show_end_of_line = true,
-			})
+			require("indent_blankline").setup()
 		end,
 	})
 
@@ -191,26 +186,23 @@ return require("packer").startup(function(use)
 	})
 
 	-- trouble.nvim
-	use({
-		"folke/trouble.nvim",
-		requires = "kyazdani42/nvim-web-devicons",
-		config = function()
-			require("trouble").setup({
-				-- your configuration comes here
-				-- or leave it empty to use the default settings
-				-- refer to the configuration section below
-			})
-		end,
-	})
+	-- use({
+	-- 	"folke/trouble.nvim",
+	-- 	requires = "kyazdani42/nvim-web-devicons",
+	-- 	config = function()
+	-- 		require("trouble").setup({
+	-- 			-- your configuration comes here
+	-- 			-- or leave it empty to use the default settings
+	-- 			-- refer to the configuration section below
+	-- 		})
+	-- 	end,
+	-- })
 
 	-- Startup time
 	use("dstein64/vim-startuptime")
 
 	-- Colorschemes
 	use({ "catppuccin/nvim", as = "catppuccin" })
-	use("rebelot/kanagawa.nvim")
-	use("folke/tokyonight.nvim")
-	use("navarasu/onedark.nvim")
 
 	if packer_bootstrap then
 		require("packer").sync()

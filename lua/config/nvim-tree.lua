@@ -1,11 +1,10 @@
-local status, nvim_tree = pcall(require, "nvim_tree")
+local status, nvim_tree = pcall(require, "nvim-tree")
 if not status then
-  return
+	return
 end
 
 nvim_tree.setup()
 
 -- Keymaps
-vim.keymap.set('n', '<C-t>', ':NvimTreeToggle<CR>')
-vim.keymap.set('n', '<C-f>', ':NvimTreeFindFile<CR>')
-
+vim.keymap.set("n", "<C-t>", ":NvimTreeToggle<CR>")
+vim.keymap.set("n", "<C-f>", ":NvimTreeFindFile<CR>")
