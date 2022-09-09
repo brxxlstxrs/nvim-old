@@ -6,8 +6,8 @@ end
 -- lualine setup
 lualine.setup({
 	options = {
-		theme = "gruvbox",
+		-- theme = "gruvbox",
 		-- theme = "catppuccin",
-		-- theme = "gruvbox-material",
+		theme = "gruvbox-material",
 	},
 })

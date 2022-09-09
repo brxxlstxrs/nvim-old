@@ -1,7 +1,7 @@
 require("impatient")
 require("core")
 require("plugins")
-require("symbols-outline").setup()
+-- require("symbols-outline").setup()
 -- vim.g.startuptime_sourced = 0
 
 -- Theme
