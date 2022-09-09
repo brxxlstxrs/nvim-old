@@ -146,18 +146,6 @@ return require("packer").startup(function(use)
 		tag = "nightly",
 	})
 
-	-- Which Key
-	-- use({
-	-- 	"folke/which-key.nvim",
-	-- 	config = function()
-	-- 		require("which-key").setup({
-	-- 			-- your configuration comes here
-	-- 			-- or leave it empty to use the default settings
-	-- 			-- refer to the configuration section below
-	-- 		})
-	-- 	end,
-	-- })
-
 	-- indent blankline
 	use({
 		"lukas-reineke/indent-blankline.nvim",
@@ -203,6 +191,14 @@ return require("packer").startup(function(use)
 	-- 			-- or leave it empty to use the default settings
 	-- 			-- refer to the configuration section below
 	-- 		})
+	-- 	end,
+	-- })
+
+	-- use({
+	-- 	"glepnir/lspsaga.nvim",
+	-- 	branch = "main",
+	-- 	config = function()
+	-- 		require("config.lspsaga")
 	-- 	end,
 	-- })
 
