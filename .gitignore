@@ -1,1 +1,4 @@
 plugin/packer_compiled.lua
+after/*
+autoload/*
+colors/*

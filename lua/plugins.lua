@@ -185,6 +185,14 @@ return require("packer").startup(function(use)
 		-- tag = 'release' -- To use the latest release
 	})
 
+	use({
+		"sindrets/diffview.nvim",
+		requires = {
+			"nvim-lua/plenary.nvim",
+			"kyazdani42/nvim-web-devicons",
+		},
+	})
+
 	-- trouble.nvim
 	-- use({
 	-- 	"folke/trouble.nvim",
@@ -203,6 +211,7 @@ return require("packer").startup(function(use)
 
 	-- Colorschemes
 	use({ "catppuccin/nvim", as = "catppuccin" })
+	use("sainnhe/gruvbox-material")
 
 	if packer_bootstrap then
 		require("packer").sync()

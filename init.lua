@@ -6,3 +6,4 @@ require("symbols-outline").setup()
 
 -- Theme
 require("colorscheme")
+-- require("config.gruvbox-material")
