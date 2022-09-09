@@ -211,6 +211,7 @@ return require("packer").startup(function(use)
 
 	-- Colorschemes
 	use({ "catppuccin/nvim", as = "catppuccin" })
+	use({ "ellisonleao/gruvbox.nvim" })
 	use("sainnhe/gruvbox-material")
 
 	if packer_bootstrap then

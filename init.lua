@@ -5,5 +5,6 @@ require("symbols-outline").setup()
 -- vim.g.startuptime_sourced = 0
 
 -- Theme
-require("colorscheme")
--- require("config.gruvbox-material")
+-- require("config.gruvbox")
+-- require("colorscheme")
+require("config.gruvbox-material")
