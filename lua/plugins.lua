@@ -13,9 +13,6 @@ return require("packer").startup(function(use)
 	-- impatient (aww speed)
 	use("lewis6991/impatient.nvim")
 
-	-- plenary
-	use("nvim-lua/plenary.nvim")
-
 	-- LSP
 	use({
 		"neovim/nvim-lspconfig",
@@ -85,20 +82,6 @@ return require("packer").startup(function(use)
 	-- A tree like view for symbols
 	use("simrat39/symbols-outline.nvim")
 
-	-- Telescope
-	use({
-		"nvim-telescope/telescope.nvim",
-		tag = "0.1.0",
-		-- or                            , branch = '0.1.x',
-		opt = true,
-		config = function()
-			require("config.telescope")
-		end,
-		requires = { { "nvim-lua/plenary.nvim" } },
-	})
-	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
-	use({ "nvim-telescope/telescope-file-browser.nvim" })
-
 	-- lualine
 	use({
 		"nvim-lualine/lualine.nvim",
@@ -122,7 +105,7 @@ return require("packer").startup(function(use)
 	use({
 		"windwp/nvim-autopairs",
 		config = function()
-			require("nvim-autopairs").setup({})
+			require("nvim-autopairs").setup()
 		end,
 	})
 
@@ -163,23 +146,36 @@ return require("packer").startup(function(use)
 		end,
 	})
 
-	-- Git support
-	use({
-		"lewis6991/gitsigns.nvim",
-		config = function()
-			require("gitsigns").setup()
-		end,
-		opt = true,
-		-- tag = 'release' -- To use the latest release
-	})
+	-- Startup time
+	use("dstein64/vim-startuptime")
 
-	use({
-		"sindrets/diffview.nvim",
-		requires = {
-			"nvim-lua/plenary.nvim",
-			"kyazdani42/nvim-web-devicons",
-		},
-	})
+	-- Colorschemes
+	use({ "catppuccin/nvim", as = "catppuccin" })
+	use("sainnhe/gruvbox-material")
+
+	-- Telescope
+	-- use({
+	-- 	"nvim-telescope/telescope.nvim",
+	-- 	tag = "0.1.0",
+	-- 	-- or                            , branch = '0.1.x',
+	-- 	-- opt = true,
+	-- 	config = function()
+	-- 		require("config.telescope")
+	-- 	end,
+	-- 	requires = { { "nvim-lua/plenary.nvim" } },
+	-- })
+	-- use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
+	-- use({ "nvim-telescope/telescope-file-browser.nvim" })
+
+	-- Git support
+	-- use({
+	-- 	"lewis6991/gitsigns.nvim",
+	-- 	config = function()
+	-- 		require("gitsigns").setup()
+	-- 	end,
+	-- 	opt = true,
+	-- 	-- tag = 'release' -- To use the latest release
+	-- })
 
 	-- trouble.nvim
 	-- use({
@@ -193,22 +189,6 @@ return require("packer").startup(function(use)
 	-- 		})
 	-- 	end,
 	-- })
-
-	-- use({
-	-- 	"glepnir/lspsaga.nvim",
-	-- 	branch = "main",
-	-- 	config = function()
-	-- 		require("config.lspsaga")
-	-- 	end,
-	-- })
-
-	-- Startup time
-	use("dstein64/vim-startuptime")
-
-	-- Colorschemes
-	use({ "catppuccin/nvim", as = "catppuccin" })
-	use({ "ellisonleao/gruvbox.nvim" })
-	use("sainnhe/gruvbox-material")
 
 	if packer_bootstrap then
 		require("packer").sync()
