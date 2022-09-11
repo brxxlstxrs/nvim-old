@@ -97,8 +97,24 @@
 --
 -- vim.cmd([[colorscheme catppuccin]])
 
-vim.g.gruvbox_material_better_performance = 1
-vim.g.gruvbox_material_foreground = "mix"
-vim.g.gruvbox_material_disable_italic_comment = 1
-vim.g.gruvbox_material_diagnostic_virtual_text = "colored"
-vim.cmd([[colorscheme gruvbox-material]])
+-- vim.g.gruvbox_material_better_performance = 1
+-- vim.g.gruvbox_material_foreground = "mix"
+-- vim.g.gruvbox_material_disable_italic_comment = 1
+-- vim.g.gruvbox_material_diagnostic_virtual_text = "colored"
+-- vim.cmd([[colorscheme gruvbox-material]])
+
+require("gruvbox").setup({
+	undercurl = true,
+	underline = true,
+	bold = true,
+	italic = false,
+	strikethrough = true,
+	invert_selection = false,
+	invert_signs = false,
+	invert_tabline = false,
+	invert_intend_guides = false,
+	inverse = true, -- invert background for search, diffs, statuslines and errors
+	contrast = "", -- can be "hard", "soft" or empty string
+	overrides = {},
+})
+vim.cmd("colorscheme gruvbox")

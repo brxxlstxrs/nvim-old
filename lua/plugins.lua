@@ -79,6 +79,9 @@ return require("packer").startup(function(use)
 	-- Completition icons
 	use("onsails/lspkind.nvim")
 
+	-- Mini
+	use("echasnovski/mini.nvim")
+
 	-- A tree like view for symbols
 	use("simrat39/symbols-outline.nvim")
 
@@ -149,10 +152,6 @@ return require("packer").startup(function(use)
 	-- Startup time
 	use("dstein64/vim-startuptime")
 
-	-- Colorschemes
-	use({ "catppuccin/nvim", as = "catppuccin" })
-	use("sainnhe/gruvbox-material")
-
 	-- Telescope
 	-- use({
 	-- 	"nvim-telescope/telescope.nvim",
@@ -189,6 +188,11 @@ return require("packer").startup(function(use)
 	-- 		})
 	-- 	end,
 	-- })
+
+	-- Colorschemes
+	use({ "catppuccin/nvim", as = "catppuccin" })
+	use("sainnhe/gruvbox-material")
+	use("ellisonleao/gruvbox.nvim")
 
 	if packer_bootstrap then
 		require("packer").sync()
