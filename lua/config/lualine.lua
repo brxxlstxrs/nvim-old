@@ -7,8 +7,8 @@ local palette = vim.fn["gruvbox_material#get_palette"]("medium", "mix", { [vim.t
 -- lualine setup
 lualine.setup({
 	options = {
-		-- theme = "catppuccin",
-		theme = "onedark",
+		theme = "catppuccin",
+		-- theme = "onedark",
 		-- theme = "gruvbox-material",
 		-- diagnostics_color = {
 		-- 	hint = { fg = palette["green"][1] },

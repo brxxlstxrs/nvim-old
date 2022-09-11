@@ -8,6 +8,9 @@ require("dapui").setup()
 require("nvim-dap-virtual-text").setup()
 
 require("dap-python").setup("~/.virtualenvs/debugpy/bin/python")
+table.insert(require("dap").configurations.python, {
+	justMyCode = true,
+})
 
 -- Keymaps
 local opts = { noremap = true, silent = true }
