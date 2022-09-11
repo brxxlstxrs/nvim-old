@@ -191,6 +191,7 @@ return require("packer").startup(function(use)
 
 	-- Colorschemes
 	use({ "catppuccin/nvim", as = "catppuccin" })
+	use("olimorris/onedarkpro.nvim")
 	use("sainnhe/gruvbox-material")
 	use("ellisonleao/gruvbox.nvim")
 

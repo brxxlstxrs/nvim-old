@@ -103,18 +103,19 @@
 -- vim.g.gruvbox_material_diagnostic_virtual_text = "colored"
 -- vim.cmd([[colorscheme gruvbox-material]])
 
-require("gruvbox").setup({
-	undercurl = true,
-	underline = true,
-	bold = true,
-	italic = false,
-	strikethrough = true,
-	invert_selection = false,
-	invert_signs = false,
-	invert_tabline = false,
-	invert_intend_guides = false,
-	inverse = true, -- invert background for search, diffs, statuslines and errors
-	contrast = "", -- can be "hard", "soft" or empty string
-	overrides = {},
+require("onedarkpro").setup({
+	plugins = {
+		treesitter,
+		native_lsp,
+		nvim_cmp,
+		nvim_tree,
+		nvim_dap,
+		nvim_dap_ui,
+		packer,
+		telescope,
+		trouble,
+		which_key,
+		tohggleterm,
+	},
 })
-vim.cmd("colorscheme gruvbox")
+vim.cmd("colorscheme onedarkpro")
