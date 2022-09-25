@@ -1,4 +1,4 @@
-local o = vim.opt
+local o = vim.o
 -- Options
 
 -- Editor options
@@ -7,12 +7,13 @@ o.colorcolumn = "81"
 o.background = "dark"
 o.termguicolors = true
 -- vim.o.wrap = false
-o.mouse = "a"
+-- o.mouse="a"
+o.mousemodel = "extend"
 
 o.expandtab = true
--- vim.o.shiftwidth = 4
--- vim.o.tabstop = 4
--- vim.o.softtabstop = 4
+vim.o.shiftwidth = 4
+vim.o.tabstop = 4
+vim.o.softtabstop = 4
 
 o.updatetime = 300
 o.hidden = true
@@ -22,6 +23,8 @@ o.swapfile = false
 
 -- completeopt
 o.completeopt = "menuone,noselect"
+
+-- vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
 
 -- o.list = true
 -- o.listchars:append("eol:↴")

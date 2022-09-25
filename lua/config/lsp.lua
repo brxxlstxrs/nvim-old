@@ -3,6 +3,7 @@ if not status then
 	return
 end
 
+
 local lsp_formatting = function(bufnr)
 	vim.lsp.buf.format({
 		filter = function(client)
@@ -38,6 +39,10 @@ local on_attach = function(client, bufnr)
 			end,
 		})
 	end
+
+  -- navic
+  -- local navic = require("nvim-navic")
+  -- navic.attach(client, bufnr)
 
 	-- Mappings.
 	-- See `:help vim.lsp.*` for documentation on any of the below functions
