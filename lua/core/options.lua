@@ -3,9 +3,11 @@ local o = vim.o
 
 -- Editor options
 o.number = true
+o.relativenumber = true
 o.colorcolumn = "81"
 o.background = "dark"
 o.termguicolors = true
+-- o.signcolumn = "yes"
 -- vim.o.wrap = false
 -- o.mouse="a"
 o.mousemodel = "extend"
