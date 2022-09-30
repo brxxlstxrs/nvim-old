@@ -10,7 +10,7 @@ return require("packer").startup(function(use)
   -- Packer can manage itself
   use "wbthomason/packer.nvim"
 
-  -- impatient (aww speed)
+  -- impatient (more speed)
   use "lewis6991/impatient.nvim"
 
   -- LSP
@@ -68,11 +68,11 @@ return require("packer").startup(function(use)
     config = function()
       require("config.treesitter")
     end,
-  }
-  use "windwp/nvim-ts-autotag"
-  use {
-    "nvim-treesitter/nvim-treesitter-context",
-    opt = true,
+    requires = {
+      {"windwp/nvim-ts-autotag"},
+      {'nvim-treesitter/nvim-treesitter-textobjects'},
+      {"nvim-treesitter/nvim-treesitter-context", opt = true,},
+    },
   }
 
   -- Completition icons
@@ -87,9 +87,6 @@ return require("packer").startup(function(use)
     requires = { "kyazdani42/nvim-web-devicons" },
   }
 
-  -- Mini
-  -- use "echasnovski/mini.nvim"
-
   -- A tree like view for symbols
   use "simrat39/symbols-outline.nvim"
 
@@ -103,21 +100,13 @@ return require("packer").startup(function(use)
     requires = "kyazdani42/nvim-web-devicons",
   }
 
+
   -- autopairs
   use {
     "windwp/nvim-autopairs",
     config = function()
       require("nvim-autopairs").setup()
     end,
-  }
-
-  -- nvim surround
-  use {
-      "kylechui/nvim-surround",
-      tag = "*", -- Use for stability; omit to use `main` branch for the latest features
-      config = function()
-        require("nvim-surround").setup()
-      end,
   }
 
   -- Comment
@@ -141,7 +130,6 @@ return require("packer").startup(function(use)
   }
 
   -- indent blankline
-
   use {
     "lukas-reineke/indent-blankline.nvim",
     config = function()
@@ -149,6 +137,15 @@ return require("packer").startup(function(use)
         show_current_context = true,
       })
     end,
+  }
+
+  -- nvim surround
+  use {
+      "kylechui/nvim-surround",
+      tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+      config = function()
+        require("nvim-surround").setup()
+      end,
   }
 
   -- Terminal from vim
@@ -160,30 +157,21 @@ return require("packer").startup(function(use)
     end,
   }
 
-  -- neoscroll
-  use {
-    'karb94/neoscroll.nvim',
-    config = function()
-      require('neoscroll').setup()
-    end,
-  }
-
   -- Startup time
   use "dstein64/vim-startuptime"
 
   -- Telescope
-  -- use {
-  --  "nvim-telescope/telescope.nvim",
-  --  tag = "0.1.0",
-  --  -- or                            , branch = '0.1.x',
-  --  -- opt = true,
-  --  config = function()
-  --    require("config.telescope")
-  --  end,
-  --  requires = { { "nvim-lua/plenary.nvim" } },
-  -- }
-  -- use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
-  -- use { "nvim-telescope/telescope-file-browser.nvim" }
+  use {
+   "nvim-telescope/telescope.nvim",
+   tag = "0.1.0",
+   -- opt = true,
+   config = function()
+     require("config.telescope")
+   end,
+   requires = { { "nvim-lua/plenary.nvim" } },
+  }
+  use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
+  use { "nvim-telescope/telescope-file-browser.nvim" }
 
   -- Git support
   -- use {
