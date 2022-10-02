@@ -6,6 +6,6 @@ end
 -- lualine setup
 lualine.setup({
 	options = {
-		theme = "nord",
+		theme = "onenord",
 	},
 })

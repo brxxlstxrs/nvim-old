@@ -1,10 +1,12 @@
-g = vim.g
+local g = vim.g
 
-g.nord_contrast = true
-g.nord_borders = true
-g.nord_italic = false
+-- g.nord_contrast = true
+-- g.nord_borders = true
+-- g.nord_italic = false
+--
+-- require("nord").set()
 
-require("nord").set()
+require('onenord').setup()
 
 -- vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
 --

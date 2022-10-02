@@ -1,6 +1,6 @@
-pcall(require, "impatient")
+require("impatient")
 require("core")
 require("plugins")
 
 -- Theme
-pcall(require, "colorscheme")
+require("colorscheme")

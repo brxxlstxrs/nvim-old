@@ -69,14 +69,26 @@ return require("packer").startup(function(use)
       require("config.treesitter")
     end,
     requires = {
-      {"windwp/nvim-ts-autotag"},
-      {'nvim-treesitter/nvim-treesitter-textobjects'},
-      {"nvim-treesitter/nvim-treesitter-context", opt = true,},
+      -- {"windwp/nvim-ts-autotag"},
+      -- {'nvim-treesitter/nvim-treesitter-textobjects'},
+      -- {"nvim-treesitter/nvim-treesitter-context", opt = true,},
     },
   }
 
   -- Completition icons
   use "onsails/lspkind.nvim"
+
+  -- Telescope
+  use {
+   "nvim-telescope/telescope.nvim",
+   tag = "0.1.0",
+   -- opt = true,
+   config = function()
+     require("config.telescope")
+   end,
+   requires = { { "nvim-lua/plenary.nvim" } },
+  }
+  use { "nvim-telescope/telescope-file-browser.nvim" }
 
   -- lualine
   use {
@@ -90,6 +102,9 @@ return require("packer").startup(function(use)
   -- A tree like view for symbols
   use "simrat39/symbols-outline.nvim"
 
+  -- sniprun 
+  use { 'michaelb/sniprun', run = 'bash ./install.sh'}
+
   -- bufferline
   use {
     "akinsho/bufferline.nvim",
@@ -99,7 +114,6 @@ return require("packer").startup(function(use)
     end,
     requires = "kyazdani42/nvim-web-devicons",
   }
-
 
   -- autopairs
   use {
@@ -142,13 +156,12 @@ return require("packer").startup(function(use)
   -- nvim surround
   use {
       "kylechui/nvim-surround",
-      tag = "*", -- Use for stability; omit to use `main` branch for the latest features
       config = function()
         require("nvim-surround").setup()
       end,
   }
 
-  -- Terminal from vim
+  -- toggleterm
   use {
     "akinsho/toggleterm.nvim",
     tag = "v2.*",
@@ -160,34 +173,20 @@ return require("packer").startup(function(use)
   -- Startup time
   use "dstein64/vim-startuptime"
 
-  -- Telescope
-  use {
-   "nvim-telescope/telescope.nvim",
-   tag = "0.1.0",
-   -- opt = true,
-   config = function()
-     require("config.telescope")
-   end,
-   requires = { { "nvim-lua/plenary.nvim" } },
-  }
-  use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
-  use { "nvim-telescope/telescope-file-browser.nvim" }
-
   -- Git support
-  -- use {
-  --  "lewis6991/gitsigns.nvim",
-  --  config = function()
-  --    require("gitsigns").setup()
-  --  end,
-  --  opt = true,
-  --  -- tag = 'release' -- To use the latest release
-  -- }
+  use {
+   "lewis6991/gitsigns.nvim",
+   config = function()
+     require("gitsigns").setup()
+   end,
+   opt = true,
+  }
 
   -- Colorschemes
-  use { "catppuccin/nvim", as = "catppuccin" }
   use 'shaunsingh/nord.nvim'
   use "rebelot/kanagawa.nvim"
   use 'folke/tokyonight.nvim'
+  use 'rmehri01/onenord.nvim'
 
   if packer_bootstrap then
     require("packer").sync()
