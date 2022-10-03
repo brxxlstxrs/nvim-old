@@ -80,15 +80,17 @@ return require("packer").startup(function(use)
 
   -- Telescope
   use {
-   "nvim-telescope/telescope.nvim",
-   tag = "0.1.0",
-   -- opt = true,
-   config = function()
-     require("config.telescope")
-   end,
-   requires = { { "nvim-lua/plenary.nvim" } },
+    "nvim-telescope/telescope.nvim",
+    tag = "0.1.0",
+    opt = true,
+    config = function()
+      require("config.telescope")
+    end,
+    requires = { 
+      "nvim-lua/plenary.nvim" ,
+      "nvim-telescope/telescope-file-browser.nvim"
+    },
   }
-  use { "nvim-telescope/telescope-file-browser.nvim" }
 
   -- lualine
   use {
@@ -103,7 +105,11 @@ return require("packer").startup(function(use)
   use "simrat39/symbols-outline.nvim"
 
   -- sniprun 
-  use { 'michaelb/sniprun', run = 'bash ./install.sh'}
+  use {
+    'michaelb/sniprun',
+    run = 'bash ./install.sh',
+    opt = true,
+  }
 
   -- bufferline
   use {
