@@ -13,6 +13,15 @@ return require("packer").startup(function(use)
   -- impatient (more speed)
   use "lewis6991/impatient.nvim"
 
+  --mason
+  use {
+    {"williamboman/mason.nvim",
+      config = function()
+        require("config.mason")
+      end,},
+    "williamboman/mason-lspconfig.nvim"
+  }
+
   -- LSP
   use {
     "neovim/nvim-lspconfig",
@@ -86,9 +95,9 @@ return require("packer").startup(function(use)
     config = function()
       require("config.telescope")
     end,
-    requires = { 
+    requires = {
       "nvim-lua/plenary.nvim" ,
-      "nvim-telescope/telescope-file-browser.nvim"
+      {"nvim-telescope/telescope-file-browser.nvim", opt = true}
     },
   }
 
@@ -102,13 +111,13 @@ return require("packer").startup(function(use)
   }
 
   -- A tree like view for symbols
-  use "simrat39/symbols-outline.nvim"
+  -- use "simrat39/symbols-outline.nvim"
 
   -- sniprun 
   use {
     'michaelb/sniprun',
-    run = 'bash ./install.sh',
     opt = true,
+    run = 'bash ./install.sh',
   }
 
   -- bufferline
@@ -190,9 +199,9 @@ return require("packer").startup(function(use)
 
   -- Colorschemes
   use 'shaunsingh/nord.nvim'
+  use 'rmehri01/onenord.nvim'
   use "rebelot/kanagawa.nvim"
   use 'folke/tokyonight.nvim'
-  use 'rmehri01/onenord.nvim'
 
   if packer_bootstrap then
     require("packer").sync()
