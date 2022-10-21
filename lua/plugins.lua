@@ -13,7 +13,7 @@ return require("packer").startup(function(use)
   -- impatient (more speed)
   use "lewis6991/impatient.nvim"
 
-  --mason
+  -- mason
   use {
     {"williamboman/mason.nvim",
       config = function()
@@ -77,11 +77,11 @@ return require("packer").startup(function(use)
     config = function()
       require("config.treesitter")
     end,
-    requires = {
-      -- {"windwp/nvim-ts-autotag"},
-      -- {'nvim-treesitter/nvim-treesitter-textobjects'},
-      -- {"nvim-treesitter/nvim-treesitter-context", opt = true,},
-    },
+    -- requires = {
+    --   {"windwp/nvim-ts-autotag"},
+    --   {'nvim-treesitter/nvim-treesitter-textobjects'},
+    --   {"nvim-treesitter/nvim-treesitter-context", opt = true,},
+    -- },
   }
 
   -- Completition icons
@@ -112,13 +112,6 @@ return require("packer").startup(function(use)
 
   -- A tree like view for symbols
   -- use "simrat39/symbols-outline.nvim"
-
-  -- sniprun 
-  use {
-    'michaelb/sniprun',
-    opt = true,
-    run = 'bash ./install.sh',
-  }
 
   -- bufferline
   use {
@@ -198,9 +191,10 @@ return require("packer").startup(function(use)
   }
 
   -- Colorschemes
-  use 'shaunsingh/nord.nvim'
   use 'rmehri01/onenord.nvim'
+  use 'shaunsingh/nord.nvim'
   use "rebelot/kanagawa.nvim"
+  use 'bluz71/vim-nightfly-guicolors'
   use 'folke/tokyonight.nvim'
 
   if packer_bootstrap then

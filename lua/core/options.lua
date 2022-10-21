@@ -4,6 +4,8 @@ local o = vim.o
 -- Editor options
 o.number = true
 o.relativenumber = true
+o.cursorline = true
+o.cursorlineopt = 'number'
 o.colorcolumn = "81"
 o.background = "dark"
 o.termguicolors = true
@@ -13,9 +15,9 @@ o.termguicolors = true
 o.mousemodel = "extend"
 
 o.expandtab = true
-vim.o.shiftwidth = 4
-vim.o.tabstop = 4
-vim.o.softtabstop = 4
+o.shiftwidth = 4
+o.tabstop = 4
+o.softtabstop = 4
 
 o.updatetime = 300
 o.hidden = true

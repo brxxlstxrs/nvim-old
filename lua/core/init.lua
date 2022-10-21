@@ -1,6 +1,11 @@
+g = vim.g
+
+g.loaded_netrw = 1
+g.loaded_netrwPlugin = 1
+
 -- leader
-vim.g.mapleader = ","
-vim.g.python3_host_prog = "/usr/bin/python"
+g.mapleader = ","
+g.python3_host_prog = "/usr/bin/python"
 
 require("core.options")
 require("core.autocmds")

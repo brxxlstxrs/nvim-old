@@ -73,30 +73,36 @@ vim.diagnostic.config({
 })
 
 -- Setup lspconfig from cmp-nvim configuration
-local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 -- Servers
--- Lua
+-- Python
 lspconfig.pyright.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
 })
 
-lspconfig.sumneko_lua.setup({
-	settings = {
-		Lua = {
-			diagnostics = {
-				-- Get the language server to recognize the `vim` global
-				globals = { "vim" },
-			},
-			workspace = {
-				library = vim.api.nvim_get_runtime_file("", true),
-			},
-		},
-	},
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
+-- lspconfig.sumneko_lua.setup({
+-- 	settings = {
+-- 		Lua = {
+-- 			diagnostics = {
+-- 				-- Get the language server to recognize the `vim` global
+-- 				globals = { "vim" },
+-- 			},
+-- 			workspace = {
+-- 				library = vim.api.nvim_get_runtime_file("", true),
+-- 			},
+-- 		},
+-- 	},
+-- 	on_attach = on_attach,
+-- 	capabilities = capabilities,
+-- })
+
+-- require('lspconfig').sqls.setup{
+--     on_attach = function(client, bufnr)
+--         require('sqls').on_attach(client, bufnr)
+--     end
+-- }
 
 local servers = {
 	-- 'emmet_ls',
