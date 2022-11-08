@@ -29,10 +29,10 @@ local on_attach = function(client, bufnr)
 end
 
 vim.diagnostic.config({
-	virtual_text = {
-		-- prefix = '■', -- Could be '●', '▎', 'x'
-		prefix = "●",
-	},
+  virtual_text = {
+    -- prefix = '■', -- Could be '●', '▎', 'x'
+    prefix = "●",
+  },
 })
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
