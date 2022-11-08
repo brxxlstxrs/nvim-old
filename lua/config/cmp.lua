@@ -99,5 +99,3 @@ cmp.setup.cmdline({ '/', '?' }, {
     { name = 'buffer' }
   }
 })
-
--- Set up lspconfig.
