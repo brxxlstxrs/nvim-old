@@ -72,6 +72,9 @@ return require('packer').startup(function(use)
     end,
   }
 
+  use 'ranjithshegde/ccls.nvim'
+  use 'p00f/clangd_extensions.nvim'
+
   use {
     'nvim-lualine/lualine.nvim',
     config = function()

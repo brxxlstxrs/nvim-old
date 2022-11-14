@@ -4,7 +4,7 @@ if not status then
 end
 
 treesitter_configs.setup {
-  ensure_installed = { "c", "lua", "python" },
+  ensure_installed = { "c", "lua", "python", "cpp" },
   highlight = {
     enable = true,
     additional_vim_regex_highlighting = false,

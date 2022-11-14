@@ -37,6 +37,33 @@ vim.diagnostic.config({
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
+-- local ccls = require('ccls')
+-- local util = require "lspconfig.util"
+--
+-- local server_config = {
+--     filetypes = { "c", "cpp", "objc", "objcpp", "opencl" },
+--     root_dir = function(fname)
+--         return util.root_pattern("compile_commands.json", "compile_flags.txt", ".git")(fname)
+--             or util.find_git_ancestor(fname)
+--     end,
+--     init_options = { cache = {
+--         directory = vim.fs.normalize "~/.cache/ccls"
+--     } },
+--     on_attach = on_attach,
+--     capabilities = capabilities,
+-- }
+--
+-- ccls.setup { lsp = { lspconfig = server_config } }
+
+local clangd_extensions = require('clangd_extensions')
+
+clangd_extensions.setup({
+  server = {
+    on_attach = on_attach,
+    capabilities = capabilities,
+  }
+})
+
 servers = {
   "pyright",
 }
