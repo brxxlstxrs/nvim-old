@@ -18,10 +18,10 @@ vim.cmd([[
   augroup end
 ]])
 
+
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
   use 'lewis6991/impatient.nvim'
-  use 'dstein64/vim-startuptime'
 
   -- LSP
   use {
@@ -30,6 +30,26 @@ return require('packer').startup(function(use)
       require('config.lsp')
     end,
   }
+
+  -- null-ls
+  use {
+    'jose-elias-alvarez/null-ls.nvim',
+    config = function()
+      require('config.null-ls')
+    end,
+    requires = "nvim-lua/plenary.nvim",
+  }
+
+  -- snippets
+  use {
+    'L3MON4D3/LuaSnip',
+    requires = {
+      "rafamadriz/friendly-snippets", 
+      'saadparwaiz1/cmp_luasnip',
+    }
+  }
+
+  -- autocopletition
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/cmp-path'
@@ -40,27 +60,16 @@ return require('packer').startup(function(use)
       require('config.cmp')
     end,
     requires = {
-      'nvim-tree/nvim-web-devicons',
-      'onsails/lspkind.nvim',
+      {'nvim-tree/nvim-web-devicons'},
       {"windwp/nvim-autopairs",
         config = function()
           require("nvim-autopairs").setup {}
-        end  },
+        end, },
+      {'onsails/lspkind.nvim'},
     },
   }
 
-  -- null-ls
-  use {
-    'jose-elias-alvarez/null-ls.nvim',
-    config = function()
-      require('config.null-ls')
-    end,
-    requires = "nvim-lua/plenary.nvim"
-  }
-
-  use 'L3MON4D3/LuaSnip'
-  use 'saadparwaiz1/cmp_luasnip'
-
+  -- code highligting
   use {
     'nvim-treesitter/nvim-treesitter',
     config = function()
@@ -71,10 +80,12 @@ return require('packer').startup(function(use)
       ts_update()
     end,
   }
-
-  use 'ranjithshegde/ccls.nvim'
+  
+  -- cpp tools
+  -- use 'ranjithshegde/ccls.nvim'
   use 'p00f/clangd_extensions.nvim'
 
+  -- statusline
   use {
     'nvim-lualine/lualine.nvim',
     config = function()
@@ -82,15 +93,20 @@ return require('packer').startup(function(use)
     end,
   }
 
+  -- highlight indent level
   use "lukas-reineke/indent-blankline.nvim"
 
+  -- commenting
   use {
     'numToStr/Comment.nvim',
     config = function()
         require('Comment').setup()
-    end
+    end,
   }
   
+  -- other plugins
+  use 'dstein64/vim-startuptime'
+
   -- colorscheme
   use 'rmehri01/onenord.nvim'
 

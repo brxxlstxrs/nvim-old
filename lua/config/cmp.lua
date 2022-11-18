@@ -4,6 +4,7 @@ if not status then
 end
 
 local luasnip = require('luasnip')
+require("luasnip.loaders.from_vscode").lazy_load()
 
 local lspkind = require('lspkind')
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
