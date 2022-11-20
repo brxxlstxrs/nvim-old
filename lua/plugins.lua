@@ -62,9 +62,9 @@ return require('packer').startup(function(use)
     requires = {
       {'nvim-tree/nvim-web-devicons'},
       {"windwp/nvim-autopairs",
-        config = function()
-          require("nvim-autopairs").setup {}
-        end, },
+  --[[{]]  config = function() -- }
+  --[[{]]    require("nvim-autopairs").setup {} -- }
+  --[[{]]  end, },
       {'onsails/lspkind.nvim'},
     },
   }
