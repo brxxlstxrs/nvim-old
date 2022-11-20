@@ -13,7 +13,7 @@ local options = {
   completeopt = "menu,menuone,noselect",
   ignorecase = true,
   mousemodel = "extend",
-  clipboard = "unnamed,unnamedplus",
+  -- clipboard = "unnamed,unnamedplus",
 
   expandtab = true,
   shiftwidth = 4,

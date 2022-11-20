@@ -82,7 +82,7 @@ return require('packer').startup(function(use)
   }
   
   -- cpp tools
-  -- use 'ranjithshegde/ccls.nvim'
+  use 'ranjithshegde/ccls.nvim'
   use 'p00f/clangd_extensions.nvim'
 
   -- statusline
