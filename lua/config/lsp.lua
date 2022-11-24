@@ -37,16 +37,15 @@ vim.diagnostic.config({
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-require("ccls").setup({lsp = {use_defaults = true}})
 
--- local clangd_extensions = require('clangd_extensions')
---
--- clangd_extensions.setup({
---   server = {
---     on_attach = on_attach,
---     capabilities = capabilities,
---   }
--- })
+local clangd_extensions = require('clangd_extensions')
+
+clangd_extensions.setup({
+  server = {
+    on_attach = on_attach,
+    capabilities = capabilities,
+  }
+})
 
 servers = {
   "pyright",
