@@ -6,5 +6,6 @@ end
 lualine.setup({
   options = {
 	theme = "onenord",
+    -- theme = "gruvbox"
   },
 })

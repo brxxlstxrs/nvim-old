@@ -23,6 +23,12 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
   use 'lewis6991/impatient.nvim'
 
+  -- mason
+  use {
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
+  }
+
   -- LSP
   use {
     'neovim/nvim-lspconfig',
@@ -109,6 +115,8 @@ return require('packer').startup(function(use)
 
   -- colorscheme
   use 'rmehri01/onenord.nvim'
+  use { "ellisonleao/gruvbox.nvim" }
+
 
   if packer_bootstrap then
     require('packer').sync()

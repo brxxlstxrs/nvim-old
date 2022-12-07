@@ -3,6 +3,11 @@ if not status then
   return
 end
 
+local on_init = function(new_client, _) -- not recomended 
+  new_client.offset_encoding = 'utf-16'
+end
+
+
 local lsp_formatting = function(bufnr)
     vim.lsp.buf.format({
         filter = function(client)
