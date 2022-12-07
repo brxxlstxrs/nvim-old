@@ -115,6 +115,7 @@ return require('packer').startup(function(use)
 
   -- colorscheme
   use 'rmehri01/onenord.nvim'
+  use 'gbprod/nord.nvim'
   use { "ellisonleao/gruvbox.nvim" }
 
 

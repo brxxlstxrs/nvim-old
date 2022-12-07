@@ -37,12 +37,12 @@ vim.diagnostic.config({
 
 vim.lsp.set_log_level("debug")
 
--- local mason, mason_lspconfig = require('mason'), require('mason-lspconfig')
--- mason.setup()
--- mason_lspconfig.setup({
---     ensure_installed = { "pyright" },
---     automatic_installation = false,
--- })
+local mason, mason_lspconfig = require('mason'), require('mason-lspconfig')
+mason.setup()
+mason_lspconfig.setup({
+    ensure_installed = { "pyright" },
+    automatic_installation = false,
+})
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 capabilities.offsetEncoding = { "utf-16" }

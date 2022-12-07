@@ -13,3 +13,4 @@ end
 -- vim.cmd([[colorscheme gruvbox]])
 
 onenord.setup()
+
