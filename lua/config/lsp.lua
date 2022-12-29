@@ -32,17 +32,14 @@ vim.diagnostic.config({
   virtual_text = {
     -- prefix = '■', -- Could be '●', '▎', 'x'
     prefix = "●",
+    -- underline = true, 
   },
 })
 
-vim.lsp.set_log_level("debug")
+-- vim.cmd [[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
 
-local mason, mason_lspconfig = require('mason'), require('mason-lspconfig')
-mason.setup()
-mason_lspconfig.setup({
-    ensure_installed = { "pyright" },
-    automatic_installation = false,
-})
+-- vim.lsp.set_log_level("debug")
+
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 capabilities.offsetEncoding = { "utf-16" }

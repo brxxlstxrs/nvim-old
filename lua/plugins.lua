@@ -1,125 +1,99 @@
-local ensure_packer = function()
-  local fn = vim.fn
-  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-  if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-    vim.cmd [[packadd packer.nvim]]
-    return true
-  end
-  return false
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "--single-branch",
+    "https://github.com/folke/lazy.nvim.git",
+    lazypath,
+  })
 end
+vim.opt.runtimepath:prepend(lazypath)
 
-local packer_bootstrap = ensure_packer()
-
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
-  augroup end
-]])
-
-
-return require('packer').startup(function(use)
-  use 'wbthomason/packer.nvim'
-  use 'lewis6991/impatient.nvim'
-
-  -- mason
-  use {
-    "williamboman/mason.nvim",
-    "williamboman/mason-lspconfig.nvim",
-  }
-
+local plugins = {
+  
   -- LSP
-  use {
-    'neovim/nvim-lspconfig',
+  {
+    "neovim/nvim-lspconfig",
     config = function()
       require('config.lsp')
     end,
-  }
+    dependencies = {
+      'hrsh7th/cmp-nvim-lsp',
+      'ranjithshegde/ccls.nvim',
+      'p00f/clangd_extensions.nvim',
+    },
+  },
 
-  -- null-ls
-  use {
-    'jose-elias-alvarez/null-ls.nvim',
-    config = function()
-      require('config.null-ls')
-    end,
-    requires = "nvim-lua/plenary.nvim",
-  }
+  -- autopairs
+  'windwp/nvim-autopairs',
 
   -- snippets
-  use {
+  {
     'L3MON4D3/LuaSnip',
-    requires = {
-      "rafamadriz/friendly-snippets", 
+    dependencies = {
+      "rafamadriz/friendly-snippets",
       'saadparwaiz1/cmp_luasnip',
-    }
-  }
-
-  -- autocopletition
-  use 'hrsh7th/cmp-nvim-lsp'
-  use 'hrsh7th/cmp-buffer'
-  use 'hrsh7th/cmp-path'
-  use 'hrsh7th/cmp-cmdline'
-  use {
-    'hrsh7th/nvim-cmp',
-    config = function()
-      require('config.cmp')
-    end,
-    requires = {
-      {'nvim-tree/nvim-web-devicons'},
-      {"windwp/nvim-autopairs",
-  --[[{]]  config = function() -- }
-  --[[{]]    require("nvim-autopairs").setup {} -- }
-  --[[{]]  end, },
-      {'onsails/lspkind.nvim'},
     },
-  }
+  },
 
-  -- code highligting
-  use {
-    'nvim-treesitter/nvim-treesitter',
+  -- autocompletition
+  {
+    "hrsh7th/nvim-cmp",
     config = function()
-      require('config.treesitter')
+      require("config.cmp")
     end,
-    run = function()
-      local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
-      ts_update()
-    end,
-  }
-  
-  -- cpp tools
-  use 'ranjithshegde/ccls.nvim'
-  use 'p00f/clangd_extensions.nvim'
+    dependencies = {
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-cmdline',
+      'onsails/lspkind.nvim',
+    },
+  },
+
+  -- treesitter
+  {
+    'nvim-treesitter/nvim-treesitter',
+    build = ':TSUpdate',
+  },
 
   -- statusline
-  use {
+  {
     'nvim-lualine/lualine.nvim',
+    dependencies = { 'kyazdani42/nvim-web-devicons' },
     config = function()
-      require('config.lualine')
+      require("config.lualine")
     end,
-  }
+  },
+
+  -- dirs overview
+  {
+    'nvim-tree/nvim-tree.lua',
+    version = 'nightly',
+  },
 
   -- highlight indent level
-  use "lukas-reineke/indent-blankline.nvim"
+  "lukas-reineke/indent-blankline.nvim",
 
   -- commenting
-  use {
+  {
     'numToStr/Comment.nvim',
     config = function()
-        require('Comment').setup()
+      require('Comment').setup()
     end,
-  }
-  
-  -- other plugins
-  use 'dstein64/vim-startuptime'
+  },
+
+  'dstein64/vim-startuptime',
 
   -- colorscheme
-  use 'rmehri01/onenord.nvim'
-  use 'gbprod/nord.nvim'
-  use { "ellisonleao/gruvbox.nvim" }
+  "rmehri01/onenord.nvim",
+}
 
+local opts = {
+  install = {
+    colorscheme = { "onenord" },
+  },
+}
 
-  if packer_bootstrap then
-    require('packer').sync()
-  end
-end)
+require("lazy").setup(plugins, opts)
