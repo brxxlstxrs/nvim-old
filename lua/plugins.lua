@@ -12,50 +12,70 @@ end
 vim.opt.runtimepath:prepend(lazypath)
 
 local plugins = {
+  -- impatient
+  {
+    "lewis6991/impatient.nvim",
+    config = function()
+      require("impatient")
+    end,
+  },
   
   -- LSP
   {
     "neovim/nvim-lspconfig",
-    config = function()
-      require('config.lsp')
-    end,
     dependencies = {
       'hrsh7th/cmp-nvim-lsp',
       'ranjithshegde/ccls.nvim',
       'p00f/clangd_extensions.nvim',
     },
+    config = function()
+      require('config.lsp')
+    end,
   },
 
-  -- autopairs
-  'windwp/nvim-autopairs',
+  -- null-ls
+  {
+    "jose-elias-alvarez/null-ls.nvim",
+    config = function()
+      require("config.null-ls")
+    end,
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+  },
 
   -- snippets
   {
     'L3MON4D3/LuaSnip',
     dependencies = {
       "rafamadriz/friendly-snippets",
-      'saadparwaiz1/cmp_luasnip',
     },
   },
 
   -- autocompletition
   {
     "hrsh7th/nvim-cmp",
-    config = function()
-      require("config.cmp")
-    end,
     dependencies = {
+      'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-cmdline',
       'onsails/lspkind.nvim',
+      'windwp/nvim-autopairs',
+      'saadparwaiz1/cmp_luasnip',
     },
+    config = function()
+      require("config.cmp")
+    end,
   },
 
   -- treesitter
   {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
+    config = function()
+      require("config.treesitter")
+    end,
   },
 
   -- statusline
