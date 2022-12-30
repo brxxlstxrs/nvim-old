@@ -110,6 +110,15 @@ local plugins = {
 
   'dstein64/vim-startuptime',
 
+  {'glepnir/dashboard-nvim'},
+  {
+    "folke/drop.nvim",
+    event = "VimEnter",
+    config = function()
+      require("config.drop")
+    end,
+  },
+
   -- colorscheme
   "rmehri01/onenord.nvim",
 }
