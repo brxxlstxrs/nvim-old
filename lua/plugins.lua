@@ -44,10 +44,17 @@ local plugins = {
     },
   },
 
+  -- autopairs
+  {
+    "windwp/nvim-autopairs",
+    config = true,
+  },
+
   -- snippets
   {
     'L3MON4D3/LuaSnip',
     dependencies = {
+      'saadparwaiz1/cmp_luasnip',
       "rafamadriz/friendly-snippets",
     },
   },
@@ -61,7 +68,6 @@ local plugins = {
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-cmdline',
       'onsails/lspkind.nvim',
-      'windwp/nvim-autopairs',
       'saadparwaiz1/cmp_luasnip',
     },
     config = function()
@@ -99,9 +105,7 @@ local plugins = {
   -- commenting
   {
     'numToStr/Comment.nvim',
-    config = function()
-      require('Comment').setup()
-    end,
+    config = true,
   },
 
   'dstein64/vim-startuptime',
