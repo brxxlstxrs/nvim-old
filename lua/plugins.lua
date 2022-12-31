@@ -12,6 +12,9 @@ end
 vim.opt.runtimepath:prepend(lazypath)
 
 local plugins = {
+  -- lazy
+  "folke/lazy.nvim",
+
   -- impatient
   {
     "lewis6991/impatient.nvim",
@@ -46,7 +49,7 @@ local plugins = {
 
   -- autopairs
   {
-    "windwp/nvim-autopairs",
+    'windwp/nvim-autopairs',
     config = true,
   },
 
@@ -102,6 +105,14 @@ local plugins = {
   -- highlight indent level
   "lukas-reineke/indent-blankline.nvim",
 
+  {
+    "folke/noice.nvim",
+    config = function ()
+      require("config.noice")
+    end,
+    dependencies = "MunifTanjim/nui.nvim",
+  },
+
   -- commenting
   {
     'numToStr/Comment.nvim',
@@ -118,6 +129,8 @@ local plugins = {
       require("config.drop")
     end,
   },
+
+  'eandrju/cellular-automaton.nvim',
 
   -- colorscheme
   "rmehri01/onenord.nvim",
