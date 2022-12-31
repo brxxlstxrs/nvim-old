@@ -1,4 +1,5 @@
 plugin/packer_compiled.lua
+lazy-lock.json
 after/*
 autoload/*
 colors/*
