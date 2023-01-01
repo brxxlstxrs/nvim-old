@@ -10,6 +10,9 @@ local opts = {
   messages = {
     enabled = false,
   },
+  popupmenu = {
+    enabled = false,
+  },
 }
 
 noice.setup(opts)
