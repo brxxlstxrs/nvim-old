@@ -13,4 +13,3 @@ local opts = {
 }
 
 noice.setup(opts)
-vim.opt.cmdheight = 1
