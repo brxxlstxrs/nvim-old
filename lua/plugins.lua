@@ -9,7 +9,7 @@ if not vim.loop.fs_stat(lazypath) then
     lazypath,
   })
 end
-vim.opt.runtimepath:prepend(lazypath)
+vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
   -- lazy
@@ -26,8 +26,8 @@ local plugins = {
   -- LSP
   {
     "neovim/nvim-lspconfig",
+    event = { "BufReadPre", "BufNewFile" },
     dependencies = {
-      'hrsh7th/cmp-nvim-lsp',
       'ranjithshegde/ccls.nvim',
       'p00f/clangd_extensions.nvim',
     },
@@ -39,11 +39,12 @@ local plugins = {
   -- null-ls
   {
     "jose-elias-alvarez/null-ls.nvim",
+    event = { "BufReadPre", "BufNewFile" },
     config = function()
       require("config.null-ls")
     end,
     dependencies = {
-      "nvim-lua/plenary.nvim",
+      {"nvim-lua/plenary.nvim", lazy = true,},
     },
   },
 
@@ -65,6 +66,7 @@ local plugins = {
   -- autocompletition
   {
     "hrsh7th/nvim-cmp",
+    event = "InsertEnter",
     dependencies = {
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-buffer',
@@ -78,10 +80,22 @@ local plugins = {
     end,
   },
 
+  {
+    'nvim-telescope/telescope.nvim', branch = '0.1.x',
+    cmd = 'Telescope',
+    dependencies = {
+      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+    },
+    config = function()
+      require("config.telescope")
+    end,
+  },
+
   -- treesitter
   {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
+    event = { "BufReadPost", "BufNewFile" },
     config = function()
       require("config.treesitter")
     end,
@@ -90,6 +104,7 @@ local plugins = {
   -- statusline
   {
     'nvim-lualine/lualine.nvim',
+    event = "VeryLazy",
     dependencies = { 'kyazdani42/nvim-web-devicons' },
     config = function()
       require("config.lualine")
@@ -99,47 +114,60 @@ local plugins = {
   -- dirs overview
   {
     'nvim-tree/nvim-tree.lua',
+    cmd = "NvimTreeToggle",
     version = 'nightly',
+    config = function()
+      require("config.nvim-tree")
+    end,
   },
 
   -- highlight indent level
-  "lukas-reineke/indent-blankline.nvim",
-
   {
-    "folke/noice.nvim",
-    config = function ()
-      require("config.noice")
-    end,
-    dependencies = "MunifTanjim/nui.nvim",
+    "lukas-reineke/indent-blankline.nvim",
+    event = "BufReadPost",
+    config = true,
   },
 
   -- commenting
   {
     'numToStr/Comment.nvim',
+    event = "VeryLazy",
     config = true,
   },
 
-  'dstein64/vim-startuptime',
-
-  {'glepnir/dashboard-nvim'},
   {
-    "folke/drop.nvim",
-    event = "VimEnter",
-    config = function()
-      require("config.drop")
-    end,
+    'dstein64/vim-startuptime',
+    cmd = "StartupTime",
   },
 
+  {'glepnir/dashboard-nvim'},
+  
   'eandrju/cellular-automaton.nvim',
 
   -- colorscheme
-  "rmehri01/onenord.nvim",
+  {
+    "rmehri01/onenord.nvim",
+    lazy = true,
+  },
 }
 
 local opts = {
   install = {
     colorscheme = { "onenord" },
   },
+  rtp = {
+      -- disable some rtp plugins
+      disabled_plugins = {
+        "gzip",
+        -- "matchit",
+        -- "matchparen",
+        -- "netrwPlugin",
+        "tarPlugin",
+        "tohtml",
+        "tutor",
+        "zipPlugin",
+      },
+    },
 }
 
 require("lazy").setup(plugins, opts)
