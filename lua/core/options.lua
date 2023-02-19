@@ -5,7 +5,7 @@ local options = {
   colorcolumn = "81",
   background = "dark",
   termguicolors = true,
-  helpheight = 12,
+  -- helpheight = 12,
 
   hidden = true,
   backup = false,

@@ -30,6 +30,6 @@ db.setup({
         key = 'd',
       },
     },
-    disable_move = true,
   },
+  disable_move = true,
 })
