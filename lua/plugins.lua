@@ -28,6 +28,8 @@ local plugins = {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
+      "williamboman/mason.nvim",
+		  "williamboman/mason-lspconfig.nvim",
       'ranjithshegde/ccls.nvim',
       'p00f/clangd_extensions.nvim',
     },

@@ -30,5 +30,6 @@ db.setup({
         key = 'd',
       },
     },
+    disable_move = true,
   },
 })

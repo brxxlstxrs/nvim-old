@@ -3,6 +3,9 @@ if not status then
   return
 end
 
+local mason = require("mason")
+local mason_lspconfig = require("mason-lspconfig")
+
 local opts = { noremap=true, silent=true }
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
@@ -54,14 +57,21 @@ clangd_extensions.setup({
   }
 })
 
-servers = {
-  "pyright",
+local ensure_installed = {
+  -- "pyright",
   -- "ccls",
 }
 
-for _, server in ipairs(servers) do
-  lspconfig[server].setup{
-    on_attach = on_attach,
-    capabilities = capabilities,
-  }
-end
+mason.setup()
+mason_lspconfig.setup {
+  ensure_installed = ensure_installed,
+}
+
+mason_lspconfig.setup_handlers {
+  function(server)
+    lspconfig[server].setup{
+      on_attach = on_attach,
+      capabilities = capabilities,
+    }
+  end,
+}
